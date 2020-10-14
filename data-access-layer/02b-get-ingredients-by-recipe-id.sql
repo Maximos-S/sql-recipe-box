@@ -37,5 +37,9 @@
 -- FROM cities
 -- JOIN weather ON (weather.city = cities.name)
 
+select amount, food_stuff, name
+FROM ingredients
+JOIN units_of_measure ON (ingredients.unit_of_measure_id = units_of_measure.id)
+WHERE recipe_id = $1
+;
 
--- YOUR CODE HERE

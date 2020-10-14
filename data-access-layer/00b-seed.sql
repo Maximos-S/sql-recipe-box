@@ -29,7 +29,7 @@ create table recipes (
     id SERIAL primary key,
     title varchar(200) not null,
     created TIMESTAMP not null DEFAULT CURRENT_TIMESTAMP,
-    updated TIMESTAMP not null DEFAULT CURRENT_TIMESTAMP,
+    updated TIMESTAMP not null DEFAULT CURRENT_TIMESTAMP
 );
 
 
@@ -71,7 +71,7 @@ create table instructions (
 -- | name        | VARCHAR(20) | NOT NULL    |
 
 -- YOUR CODE HERE
-crete table units_of_measure (
+create table units_of_measure (
     id SERIAL primary key,
     name varchar(20) not null
 );
