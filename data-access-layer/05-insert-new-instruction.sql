@@ -45,7 +45,7 @@
 INSERT INTO instructions (list_order, specification, recipe_id)
 VALUES
 (
-    (SELECT COALESCE(null, MAX(list_order)+1)
+    (SELECT COALESCE(MAX(list_order), 0) + 1
     FROM instructions
     WHERE recipe_id = $2
     ),
