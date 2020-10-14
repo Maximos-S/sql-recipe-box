@@ -8,7 +8,7 @@
 -- user.
 
 -- YOUR CODE HERE
-
+set role recipe_box_app;
 
 
 
@@ -25,10 +25,12 @@
 -- | updated     | TIMESTAMP    | NOT NULL, DEFAULT CURRENT_TIMESTAMP |
 
 -- YOUR CODE HERE
-
-
-
-
+create table recipes (
+    id SERIAL primary key,
+    title varchar(200) not null,
+    created TIMESTAMP not null DEFAULT CURRENT_TIMESTAMP,
+    updated TIMESTAMP not null DEFAULT CURRENT_TIMESTAMP,
+);
 
 
 -- Create a table for the "instructions". It will need the following columns in
@@ -47,7 +49,13 @@
 -- | recipe_id     | INTEGER     | FK, NOT NULL |
 
 -- YOUR CODE HERE
-
+create table instructions (
+    id SERIAL primary key,
+    specification TEXT not null,
+    list_order INTEGER not null,
+    recipe_id INTEGER not null,
+    foreign key (recipe_id) references recipes(id)
+);
 
 
 
@@ -63,7 +71,10 @@
 -- | name        | VARCHAR(20) | NOT NULL    |
 
 -- YOUR CODE HERE
-
+crete table units_of_measure (
+    id SERIAL primary key,
+    name varchar(20) not null
+);
 
 
 
@@ -86,7 +97,15 @@
 -- | recipe_id          | INTEGER       | FK, NOT NULL |
 
 -- YOUR CODE HERE
-
+create table ingredients (
+    id SERIAL primary key,
+    amount NUMERIC(5, 2) not null,
+    unit_of_measure_id INTEGER not null,
+    food_stuff varchar(500) not null,
+    recipe_id INTEGER not null,
+    foreign key (unit_of_measure_id) references units_of_measure(id),
+    foreign key (recipe_id) references recipes(id)
+);
 
 
 
