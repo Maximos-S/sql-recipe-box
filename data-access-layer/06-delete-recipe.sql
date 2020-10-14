@@ -15,3 +15,14 @@
 
 
 -- YOUR CODE HERE
+delete from instructions
+WHERE recipe_id = $1
+;
+
+delete from ingredients
+WHERE recipe_id = $1
+;
+
+delete from recipes
+WHERE id = $1
+;
